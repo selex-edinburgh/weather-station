@@ -11,7 +11,7 @@ def log(windspeed):
 def worker():
 	global cur, con
 	mcp = Adafruit_MCP230XX(address = 0X20, num_gpios = 16)
-	mcp.pullup(0, 1)
+	mcp.pullup(1, 1)
 	
 	#Set up database connection
 	con = sqlite3.connect("weather.db")
@@ -25,13 +25,13 @@ def worker():
 		# run for ten seconds
 		while (time.time() < start + 10) :
 			# wait for press or time up
-			while (mcp.input(0) != 0 and time.time() < start + 10) :
+			while (mcp.input(1) != 0 and time.time() < start + 10) :
 				continue
 			# count if press but not if we got here because time up
-			if (mcp.input(0) == 0) :
+			if (mcp.input(1) == 0) :
 				pulses = pulses + 1 # count the press
 			# wait for release or time up
-			while (mcp.input(0) == 0 and time.time() < start + 10) :
+			while (mcp.input(1) == 0 and time.time() < start + 10) :
 					continue
 		print "number of pulses is %f" % pulses
 		#Once per second (10 clicks) = 1.492mph

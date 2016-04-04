@@ -21,7 +21,7 @@ def worker():
 	cur = con.cursor()
 	
 	while (run):
-		volts = adc.readADCSingleEnded() / 1000
+		volts = adc.readADCSingleEnded(1) / 1000
 		print "voltage: %.3f" % volts
 		log(volts)
 		time.sleep(5)
