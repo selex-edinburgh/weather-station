@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+<table class=entries>
+{% for entry in entries %}
+<tr><td>{{ entry.timestamp }}</td><td>{{ entry.inches|safe }}in</td></tr>
+{% else %}
+<em>No entries here so far.</em>
+{% endfor %}
+</table>
+{% endblock %}

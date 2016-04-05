@@ -1,0 +1,54 @@
+{% extends "weatherlayout.html" %}
+{% block light %}
+{% if lightlevel < 2.2 %}
+<body id='night'>
+<div class='page' id='night'>
+<div id=moon>
+{% elif lightlevel < 3 %}
+<body id='overcast'>
+<div class='page' id='overcast'>
+<div id=overcastsun>
+{% else %}
+<body id='bright'>
+<div class='page' id='bright'>
+<div id=sun>
+{% endif %} 
+{% endblock %}
+{% block precipitation %}
+{% for entry in entries %}
+{% if loop.last %}
+{% if entry.inches == 0.0 %}
+	{% if lr < 60 %}
+	<p><span id='norain'>Not Raining.</span> Last rainfall {{lr}} minute(s) ago.</p>
+	{% elif lr < 60*24 %}
+	<p><span id='norain'>Not Raining.</span> Last rainfall {{lr/60}} hour(s) ago.</p>
+	{% else %}
+	<p><span id='norain'>Not Raining.</span> Last rainfall {{'%.2f' | format(lr/60/24)}} day(s) ago.</p>
+	{% endif %}
+	<p class='rainfalltoday'><span class='rainfalltoday'>{{rainfalltoday}}</span> inches today.</p>
+{% elif entry.inches <= 1 %}
+	<p><span id='lightrain'>Light rain</span></p>
+	<p class='rainfalltoday'><span class='rainfalltoday'>{{rainfalltoday}}</span> inches today.</p>
+{% else %}
+	<p><span id='heavyrain'>Heavy rain</span></p>
+	<p class='rainfalltoday'><span class='rainfalltoday'>{{rainfalltoday}}</span> inches today.</p>
+{% endif %}
+{# <tr><td>{{ entry.timestamp }}</td><td>{{ entry.inches|safe }}in</td></tr> #}
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block rainchart %}
+{% for value in rcvalues %}
+<div class='bar' id='{{value.iden}}' style="height:{{value.inches/3*100}}%"></div>
+{% endfor %}
+{% endblock %}
+
+{% block temperature %}
+<div class='temp'><span id='currenttemp'>{{'%.0f' | format(curtemp)}}</span><span id='degrees'>&deg;C</span></div>
+<div class='temp'><p>Low | High</p><p>{{'%.0f' | format(minmax[0])}} &nbsp; &nbsp; {{'%.0f' | format(minmax[1])}}</p></div>
+{% endblock %}
+
+{% block wind %}
+<div class='wind'><span id='currentws'>{{'%.1f' | format(curwindspeed)}}</span><span id='unit'>mph</span></div>
+{% endblock %}

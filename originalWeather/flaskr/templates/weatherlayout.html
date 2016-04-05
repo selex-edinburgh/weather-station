@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>Weather Data</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='weather.css')}}">
+</head>
+{% block light %}
+{% endblock %}
+</div>
+	<div class='section' id='precipitation'>
+		<h1>Precipitation</h1>
+		{% block precipitation %}{% endblock %}
+		<div class='barchart'>
+		{% block rainchart %}{% endblock %}
+		</div>
+		<a href="#" class="statslink">More...</a>
+	</div>
+	<div class='section' id='temperature'>
+		<h1>Temperature</h1>
+		{% block temperature %}{% endblock %}
+		<div class='barchart'>
+		{% block tempchart %}{% endblock %}
+		</div>
+		<a href="#" class="statslink">More...</a>
+	</div>
+	<div class='section' id='wind'>
+		<h1>Wind</h1>
+		{% block wind %}{% endblock %}
+		<div class='barchart'>
+		{% block windchart %}{% endblock %}
+		</div>
+		<a href="#" class="statslink">More...</a>
+	</div>
+	<div class='section' id='pressurehumidity'>
+		<div id='humidity'>
+			<h2>Humidity</h2>
+			{% block humidity %}{% endblock %}
+		</div>
+		<div id='pressure'>
+			<h2>Pressure</h2>
+			{% block pressure %}{% endblock %}
+		</div>
+		<a href="#" class="statslink">More...</a>
+	</div>
+</div>
+</body>
+</html>
