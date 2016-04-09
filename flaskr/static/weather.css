@@ -43,6 +43,7 @@ margin-top: 3%;
 margin-left: 5%;
 margin-top: 52%;
 }
+
 .section#pressurehumidity{
 margin-left: 53.5%;
 margin-top: 52%;
@@ -90,7 +91,7 @@ margin-left: 80%;
 margin-top: 80%;
 }
 
-#currenttemp, #currentws{font-size: 500%;}
+#currenttemp, #currentws, #currentwd, #currentp{font-size: 500%;}
 #degrees, #unit{font-size: 200%; margin-left: 2%; vertical-align: 100%;}
 
 .barchart{
@@ -103,4 +104,5 @@ width: 1%;
 .bar#0, .bar#2, .bar#4, .bar#6, .bar#8{background-color: #999999;}
 .bar#1, .bar#3, .bar#5, .bar#7, .bar#9{background-color: #CCCCCC;}
 
-.temp, .wind{display:inline-block; margin-left: 5%; width:40%;}
+.temp, .wind, .pressure{display: inline-block; margin-left: 5%; width: 40%;}
+.winddir{display: inline-block; margin-left: 10%; float: right; margin-right: 10%;}

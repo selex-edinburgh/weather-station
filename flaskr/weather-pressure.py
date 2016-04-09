@@ -2,7 +2,7 @@ import sqlite3
 
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash
-    
+
 DATABASE = '/home/pi/Desktop/originalWeather/sensors/weather.db'
 DEBUG = True
 SECRET_KEY = 'development key'
@@ -17,11 +17,11 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 def connect_db():
 	return sqlite3.connect(app.config['DATABASE'])
 
-	
+
 @app.before_request
 def before_request():
 	g.db = connect_db()
-	
+
 @app.teardown_request
 def teardown_request(exception):
 	db = getattr(g, 'db', None)
@@ -46,12 +46,12 @@ def hello():
 	#produce a dictionary of the last 24 hourly rainfall values for the chart, even if there is no data
 	rcvalues = [dict() for i in range(23)]
 	for i in range(0, 23):
-	    cur = g.db.execute("select sum(inches) from rainfall where timestamp > datetime('now', '-{} hours') and timestamp < datetime('now', '-{} hours')".format(i+1, i))
-	    val = cur.fetchone()[0]
-	    if val == None:
-			val = 0
-	    rcvalues[i] = dict(inches=val, iden = i)
-	    
+                cur = g.db.execute("select sum(inches) from rainfall where timestamp > datetime('now', '-{} hours') and timestamp < datetime('now', '-{} hours')".format(i+1, i))
+                val = cur.fetchone()[0]
+                if val == None:
+                        val = 0
+                rcvalues[i] = dict(inches=val, iden = i)
+
 	# Temperature
 	#Latest temperature in degrees
 	cur = g.db.execute("select temp from temps order by timestamp limit 1")
@@ -60,30 +60,38 @@ def hello():
 	cur = g.db.execute("select min(temp), max(temp) from temps")
 	minmax = {0, 0}
 	minmax = cur.fetchone()
-	
+
 	#Wind
 	#Current Windspeed
 	cur = g.db.execute("select avg(windspeed) from windspeed where timestamp > datetime('now','-5 minutes')")
 	curwindspeed = cur.fetchone()[0]
 	if curwindspeed == None:
 		curwindspeed = 0.0
-		
-	#Current Wind Directon	
-	cur = g.db.execute("select direction from winddir order by timestamp desc limit 1")
-        curwinddir = cur.fetchone()[0]
-        if curwinddir == None:
-                curwinddir = "Unknown"
-		
+
 	#Light level
 	cur = g.db.execute("select avg(voltage) from light where timestamp > datetime('now', '-2 minutes')")
 	lightlevel = cur.fetchone()[0]
 	if lightlevel == None:
 		cur = g.db.execute("select voltage from light order by timestamp desc limit 1")
 		lightlevel = cur.fetchone()[0]
-		
+
+	#Wind Direction
+        cur = g.db.execute("select direction from winddir order by timestamp desc limit 1")
+        curwinddir = cur.fetchone()[0]
+        if curwinddir == None:
+                curwinddir = "Unknown"
+
+        #Pressure
+        cur = g.db.execute("select avg(mbars) from pressure where timestamp > datetime('now', '-2 minutes')")
+        curpressure = cur.fetchone()[0]
+        if curpressure == None:
+		cur = g.db.execute("select mbars from pressure order by timestamp desc limit 1")
+		curpressure = cur.fetchone()[0]
+
 	return render_template('main.html',entries=entries, rainfalltoday=rainfalltoday, lr=lr, rcvalues=rcvalues, \
-		curtemp = curtemp, minmax=minmax, curwindspeed = curwindspeed, curwinddir=curwinddir, lightlevel=lightlevel)
-	
+		curtemp = curtemp, minmax=minmax, curwindspeed = curwindspeed, lightlevel=lightlevel, curwinddir=curwinddir, \
+                curpressure = curpressure)
+
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')
-	
+

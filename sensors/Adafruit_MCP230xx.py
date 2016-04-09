@@ -3,7 +3,7 @@
 # Copyright 2012 Daniel Berlin (with some changes by Adafruit Industries/Limor Fried)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of
-# this software and associated documentation files (the "Software"), to deal MCP230XX_GPIO(1, 0xin
+# this software and associated documentation files (the "Software"), to deal  MCP230XX_GPIO(1, 0xin
 # the Software without restriction, including without limitation the rights to
 # use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
 # of the Software, and to permit persons to whom the Software is furnished to do
@@ -26,34 +26,34 @@ import time
 
 MCP23017_IODIRA = 0x00
 MCP23017_IODIRB = 0x01
-MCP23017_GPIOA = 0x12
-MCP23017_GPIOB = 0x13
-MCP23017_GPPUA = 0x0C
-MCP23017_GPPUB = 0x0D
-MCP23017_OLATA = 0x14
-MCP23017_OLATB = 0x15
-MCP23008_GPIOA = 0x09
-MCP23008_GPPUA = 0x06
-MCP23008_OLATA = 0x0A
+MCP23017_GPIOA  = 0x12
+MCP23017_GPIOB  = 0x13
+MCP23017_GPPUA  = 0x0C
+MCP23017_GPPUB  = 0x0D
+MCP23017_OLATA  = 0x14
+MCP23017_OLATB  = 0x15
+MCP23008_GPIOA  = 0x09
+MCP23008_GPPUA  = 0x06
+MCP23008_OLATA  = 0x0A
 
 class Adafruit_MCP230XX(object):
     OUTPUT = 0
     INPUT = 1
 
-    def __init__(self, address, num_gpios):
+    def __init__(self, address, num_gpios, busnum=-1):
         assert num_gpios >= 0 and num_gpios <= 16, "Number of GPIOs must be between 0 and 16"
-        self.i2c = Adafruit_I2C(address=address)
+        self.i2c = Adafruit_I2C(address=address, busnum=busnum)
         self.address = address
         self.num_gpios = num_gpios
 
         # set defaults
         if num_gpios <= 8:
-            self.i2c.write8(MCP23017_IODIRA, 0xFF) # all inputs on port A
+            self.i2c.write8(MCP23017_IODIRA, 0xFF)  # all inputs on port A
             self.direction = self.i2c.readU8(MCP23017_IODIRA)
             self.i2c.write8(MCP23008_GPPUA, 0x00)
         elif num_gpios > 8 and num_gpios <= 16:
-            self.i2c.write8(MCP23017_IODIRA, 0xFF) # all inputs on port A
-            self.i2c.write8(MCP23017_IODIRB, 0xFF) # all inputs on port B
+            self.i2c.write8(MCP23017_IODIRA, 0xFF)  # all inputs on port A
+            self.i2c.write8(MCP23017_IODIRB, 0xFF)  # all inputs on port B
             self.direction = self.i2c.readU8(MCP23017_IODIRA)
             self.direction |= self.i2c.readU8(MCP23017_IODIRB) << 8
             self.i2c.write8(MCP23017_GPPUA, 0x00)
@@ -162,7 +162,7 @@ class MCP230XX_GPIO(object):
     BCM = 0
     BOARD = 0
     def __init__(self, busnum, address, num_gpios):
-        self.chip = Adafruit_MCP230XX(busnum, address, num_gpios)
+        self.chip = Adafruit_MCP230XX(address, num_gpios, busnum)
     def setmode(self, mode):
         # do nothing
         pass
@@ -198,9 +198,7 @@ if __name__ == '__main__':
     # Python speed test on output 0 toggling at max speed
     print "Starting blinky on pin 0 (CTRL+C to quit)"
     while (True):
-      mcp.output(0, 1) # Pin 0 High
+      mcp.output(0, 1)  # Pin 0 High
       time.sleep(1);
-      mcp.output(0, 0) # Pin 0 Low
+      mcp.output(0, 0)  # Pin 0 Low
       time.sleep(1);
-
-

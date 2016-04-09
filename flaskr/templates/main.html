@@ -51,4 +51,11 @@
 
 {% block wind %}
 <div class='wind'><span id='currentws'>{{'%.1f' | format(curwindspeed)}}</span><span id='unit'>mph</span></div>
+<div class='winddir'><span id='currentwd'>{{curwinddir}}</span></div>
 {% endblock %}
+
+{% block pressure %}
+<div class='pressure'><span id='currentp'>{{'%.0f' | format(curpressure)}}</span><span id='unit'>mbar</span></div>
+{% endblock %}
+
+
