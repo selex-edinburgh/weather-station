@@ -12,6 +12,6 @@ sps = 250
 #Attempt to read temperature
 temp= tempchip.readTemperature()
 #Use temperature to find humidity
-humidity = adc.readADCSingleEnded(0)/1000 #eh screw it just print them for now
+humidity = adc.readADCSingleEnded(2)/1000 #eh screw it just print them for now
 
 print "temp %.2fC , %.3f volts" % (temp, humidity)

@@ -58,4 +58,6 @@
 <div class='pressure'><span id='currentp'>{{'%.0f' | format(curpressure)}}</span><span id='unit'>mbar</span></div>
 {% endblock %}
 
-
+{% block humidity %}
+<div class='humidity'><span id='currenth'>{{curhumidity}}</span><span id='unit'>%</span></div>
+{% endblock %}
