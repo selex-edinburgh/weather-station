@@ -1,7 +1,13 @@
 # Temperature and Pressure
-
+"""
+Turns out the humidity sensor runs on AC voltage and the Pi can't supply that
+without another board that can produce 1vrms from 3.3V. So until we have either
+a board that can do that or a humidity sensor that runs on 3.3VDC then the
+humidity parts of this code are kinda useless for the time being. As such
+they're commented out.
+"""
 from Adafruit_BMP085 import *
-from Adafruit_ADS1x15 import *
+#from Adafruit_ADS1x15 import *
 import sqlite3
 import threading
 import time
@@ -10,14 +16,14 @@ global run
 run = True
 
 #function for committing readings to the sqllte database
-def log(temperature, pressure, humidity):
+def log(temperature, pressur""", humidit"""):
     cur.execute("INSERT INTO temps values(datetime('now'),(?))",(temperature,))
     cur.execute("INSERT INTO pressure values(datetime('now'),(?))",(pressure,))
-    cur.execute("INSERT INTO humid values(datetime('now'),(?))",(humidity,))
+    #cur.execute("INSERT INTO humid values(datetime('now'),(?))",(humidity,))
     con.commit()
 
 def worker():
-    global con, cur, pressure, temperature, humidity
+    global con, cur, pressure, temperature""", humidity"""
     
     #Set up database connection
     con = sqlite3.connect("weather.db")
@@ -25,7 +31,7 @@ def worker():
     print "Connected to database ok."
 
     tempchip = BMP085(0x77)
-    adc = ADS1x15()
+    #adc = ADS1x15()
     gain = 4096
     sps = 250
     
@@ -33,17 +39,17 @@ def worker():
 
         temp = tempchip.readTemperature()
         pressure = tempchip.readPressure()
-        humidity_voltage = adc.readADCSingleEnded(2) / 1000
-        input_voltage = 3.3
-        humidity = 0
+        #humidity_voltage = adc.readADCSingleEnded(2) / 1000
+        #input_voltage = 3.3
+        #humidity = 0
         
         # convert pressure from Pascals to Millibar
         # 1 mbar = 1 hPA = 100Pa.
         pressure = pressure / 100
 
         #Calculate humidity sensor's impedance
-        impedance = (humidity_voltage / (input_voltage - humidity_voltage)) * 10000
-
+        #impedance = (humidity_voltage / (input_voltage - humidity_voltage)) * 10000
+"""
                 #Find relative humidity based on current temperature
         if temp <= 10:
                     if impedance > 9900:
@@ -233,7 +239,7 @@ def worker():
                         humidity = 90
 
         print humidity
-
+"""
         
         #This is an equation that's supposed to describe the relationship
         #between temperature, impedance and humidity (commented out as it's
@@ -245,7 +251,7 @@ def worker():
         """
                 
         #store temperature, pressure and humidity
-        log(temp, pressure, humidity)
+        log(temp, pressure""", humidity""")
         
         #sleep
         time.sleep(10)
