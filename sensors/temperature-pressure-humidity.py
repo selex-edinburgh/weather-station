@@ -16,7 +16,7 @@ global run
 run = True
 
 #function for committing readings to the sqllte database
-def log(temperature, pressur""", humidit"""):
+def log(temperature, pressure""", humidity"""):
     cur.execute("INSERT INTO temps values(datetime('now'),(?))",(temperature,))
     cur.execute("INSERT INTO pressure values(datetime('now'),(?))",(pressure,))
     #cur.execute("INSERT INTO humid values(datetime('now'),(?))",(humidity,))
