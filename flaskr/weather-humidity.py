@@ -50,7 +50,7 @@ def hello():
         val = cur.fetchone()[0]
         if val == None:
             val = 0
-            rcvalues[i] = dict(inches=val, iden = i)
+        rcvalues[i] = dict(inches=val, iden = i)
 
     # Temperature
     #Latest temperature in degrees
