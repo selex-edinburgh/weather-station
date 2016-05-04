@@ -4,7 +4,7 @@ mcp = Adafruit_MCP230XX(address = 0X20, num_gpios = 16)
 mcp.config(7,mcp.OUTPUT)
 
 #Start all scripts
-os.system("sudo python %s &" % ("originalWeather/flaskr/weather-wind.py"))
+os.system("sudo python %s &" % ("../flaskr/weather-humidity.py"))
 os.system("sudo python %s &" % ("raingauge.py"))
 os.system("sudo python %s &" % ("temperature-pressure-humidity.py"))
 os.system("sudo python %s &" % ("anemometer.py"))

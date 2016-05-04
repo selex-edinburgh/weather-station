@@ -16,14 +16,14 @@ global run
 run = True
 
 #function for committing readings to the sqllte database
-def log(temperature, pressure""", humidity"""):
+def log(temperature, pressure):
     cur.execute("INSERT INTO temps values(datetime('now'),(?))",(temperature,))
     cur.execute("INSERT INTO pressure values(datetime('now'),(?))",(pressure,))
     #cur.execute("INSERT INTO humid values(datetime('now'),(?))",(humidity,))
     con.commit()
 
 def worker():
-    global con, cur, pressure, temperature""", humidity"""
+    global con, cur, pressure, temperature#, humidity
     
     #Set up database connection
     con = sqlite3.connect("weather.db")
@@ -49,8 +49,8 @@ def worker():
 
         #Calculate humidity sensor's impedance
         #impedance = (humidity_voltage / (input_voltage - humidity_voltage)) * 10000
-"""
-                #Find relative humidity based on current temperature
+        """
+        #Find relative humidity based on current temperature
         if temp <= 10:
                     if impedance > 9900:
                         humidity = 20
@@ -239,7 +239,7 @@ def worker():
                         humidity = 90
 
         print humidity
-"""
+        """
         
         #This is an equation that's supposed to describe the relationship
         #between temperature, impedance and humidity (commented out as it's
@@ -251,7 +251,7 @@ def worker():
         """
                 
         #store temperature, pressure and humidity
-        log(temp, pressure""", humidity""")
+        log(temp, pressure)#, humidity
         
         #sleep
         time.sleep(10)
