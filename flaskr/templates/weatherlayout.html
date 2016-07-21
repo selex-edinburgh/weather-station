@@ -1,12 +1,46 @@
 <!doctype html>
+<html>
 <head>
-<meta name="viewport" content="width=device-width, maximum-scale=1">
+<meta name="viewport" content="device-width, maximum-scale=1">
 <title>Weather Data</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='weather.css')}}">
 </head>
+<body>
 {% block light %}
 {% endblock %}
+
+	<div class='hi'>
+	<p id='str'> The date is: {{ date }}</p>
+	<p id='str'> The time is: {{ time }}</p>
+	</div>
+	
+	<div id='mainbar'>
+		<div id='greybar'></div>
+		<a href="/"><div id='logo'></div></a>
+		<a href="about" id='webpages'><div id='B1'>
+		<p id='Btext'>About</p>
+		<div id='glowbar1'></div>
+		</div></a>
+		<a href="next-steps" id='webpages'><div id='B2'>
+		<p id='Btext'>Next Steps</p>
+		<div id='glowbar1'></div>
+		</div></a>
+		<a href="help" id='webpages'><div id='B3'>
+		<p id='Btext'>Help</p>
+		<div id='glowbar1'></div>
+		</div></a>
+	</div>
+
+<!---
+<div class=bigbox>
+
+	<a href="about" id='webpages'><div class='smallbox1' id=button><p id='buttontext'>About the Weather Station</p></div></a>
+	<a href="next-steps" id='webpages'><div class='smallbox2' id=button><p id='buttontext'>Essential Skills</p></div></a>
+	<a href="help" id='webpages'><div class='smallbox3' id=button><p id='buttontext'>Possible Future Developments</p></div></a>
 </div>
+--->
+
+<div id=mainboxes>
 	<div class='section' id='precipitation'>
 		<h1>Precipitation</h1>
 		{% block precipitation %}{% endblock %}
@@ -23,6 +57,7 @@
 		</div>
 		<a href="#" class="statslink">More...</a>
 	</div>
+	
 	<div class='section' id='wind'>
 		<h1>Wind</h1>
 		{% block wind %}{% endblock %}

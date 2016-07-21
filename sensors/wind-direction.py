@@ -23,29 +23,29 @@ while (True):
     volts = adc.readADCSingleEnded(0) / 1000
     print "voltage: %.3f" % volts
     if (volts < 0.45):
-        print "W"
-        log("W") 
-    elif (volts < 0.9):
-        print "NW"
-        log("NW") 
-    elif (volts < 1.35):
-        print "N"
-        log("N") 
-    elif (volts < 1.75):
-        print "SW"
-        log("SW") 
-    elif (volts < 2.25):
-        print "NE"
-        log("NE") 
-    elif (volts < 2.70):
-        print "S"
-        log("S") 
-    elif (volts < 2.95):
-        print "SE"
-        log("SE") 
-    elif (volts < 3.2):
         print "E"
         log("E") 
+    elif (volts < 0.9):
+        print "SE"
+        log("SE") 
+    elif (volts < 1.35):
+        print "S"
+        log("S") 
+    elif (volts < 1.75):
+        print "NE"
+        log("NE") 
+    elif (volts < 2.25):
+        print "SW"
+        log("SW") 
+    elif (volts < 2.70):
+        print "N"
+        log("N") 
+    elif (volts < 2.95):
+        print "NW"
+        log("NW") 
+    elif (volts < 3.2):
+        print "W"
+        log("W") 
     else:
         print "unknown"
            

@@ -1,5 +1,6 @@
 import sqlite3
 
+import datetime
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash
 
@@ -81,6 +82,10 @@ def hello():
     if curwinddir == None:
         curwinddir = "Unknown"
 
+   #time
+    date = datetime.date.today().strftime("%d, %b, %Y")
+    current_time = datetime.datetime.now().strftime("%H:%M")
+
     #Pressure
     cur = g.db.execute("select avg(mbars) from pressure where timestamp > datetime('now', '-2 minutes')")
     curpressure = cur.fetchone()[0]
@@ -94,7 +99,57 @@ def hello():
     """    
     return render_template('main.html', entries=entries, rainfalltoday=rainfalltoday, lr=lr, rcvalues=rcvalues, \
         curtemp = curtemp, minmax=minmax, curwindspeed = curwindspeed, lightlevel=lightlevel, curwinddir=curwinddir, \
-        curpressure = curpressure)#, curhumidity = curhumidity
+        curpressure = curpressure, time = current_time, date = date)#, curhumidity = curhumidity
+
+
+@app.route('/help')
+def help_page():
+
+    #time
+    date = datetime.date.today().strftime("%d, %b, %Y")
+    current_time = datetime.datetime.now().strftime("%H:%M")
+
+    #Light level
+    cur = g.db.execute("select avg(voltage) from light where timestamp > datetime('now', '-2 minutes')")
+    lightlevel = cur.fetchone()[0]
+    if lightlevel == None:
+        cur = g.db.execute("select voltage from light order by timestamp desc limit 1")
+        lightlevel = cur.fetchone()[0]
+        
+    return render_template('help.html', time = current_time, date = date, lightlevel=lightlevel)
+
+
+@app.route('/about')
+def about_page():
+
+    #time
+    date = datetime.date.today().strftime("%d, %b, %Y")
+    current_time = datetime.datetime.now().strftime("%H:%M")
+
+    #Light level
+    cur = g.db.execute("select avg(voltage) from light where timestamp > datetime('now', '-2 minutes')")
+    lightlevel = cur.fetchone()[0]
+    if lightlevel == None:
+        cur = g.db.execute("select voltage from light order by timestamp desc limit 1")
+        lightlevel = cur.fetchone()[0]
+        
+    return render_template('about.html', time = current_time, date = date, lightlevel=lightlevel)
+    
+@app.route('/next-steps')
+def nextsteps_page():
+
+    #time
+    date = datetime.date.today().strftime("%d, %b, %Y")
+    current_time = datetime.datetime.now().strftime("%H:%M")
+
+    #Light level
+    cur = g.db.execute("select avg(voltage) from light where timestamp > datetime('now', '-2 minutes')")
+    lightlevel = cur.fetchone()[0]
+    if lightlevel == None:
+        cur = g.db.execute("select voltage from light order by timestamp desc limit 1")
+        lightlevel = cur.fetchone()[0]
+        
+    return render_template('nextsteps.html', time = current_time, date = date, lightlevel=lightlevel)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

@@ -1,14 +1,34 @@
-#bright { background-color: #66AADD; }
-#overcast {background-color: #AAAAAA; }
-#night { background-color: #334477; }
+	/*the following code are the colours of the background that change with respect to light levels. 
+The logic for this can be found in "main.html"(ref 1)*/
+#bright { background: url("sun.jpg") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover }
+#overcast {background: url("cloudy-skies.jpg") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover; }
+#night { background: url("KKSGGBW.jpg") no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover; }
+
+#mainboxes {
+	margin: auto;
+	width: 65%;
+	
+} 
 
 .section h1{
 text-align: center;
 font-size: medium;
 }
-
+/*the following code edits the shape and color of the grey boxes*/
 div.section {
-width: 40%; height: 40%;
+width: 30em; height: 25em;
 background-color: #DDDDDD;
 opacity: 0.7;
 border-radius: 10%;
@@ -16,6 +36,30 @@ padding-top: 1%;
 padding-bottom: 1%;
 position: absolute;
 overflow: hidden;
+}
+
+#wind:hover{
+width: 31em;
+height: 26em;
+opacity: 0.8;
+}
+
+#pressurehumidity:hover{
+width: 31em;
+height: 26em;
+opacity: 0.8;
+}
+
+#precipitation:hover{
+width: 31em;
+height: 26em;
+opacity: 0.8;
+}
+
+#temperature:hover{
+width: 31em;
+height: 26em;
+opacity: 0.8;
 }
 
 .section p{
@@ -28,25 +72,38 @@ margin-right: 5%;
 }
 
 span.rainfalltoday{
-font-size: xx-large;
+font-size: x-large;
 }
 
 .section#precipitation{
-margin-left: 5%;
-margin-top: 3%;
+margin-left: 3em;
+margin-top: 5em;
 }
 .section#temperature{
-margin-left: 53.5%;
-margin-top: 3%;
+margin-left: 40em;
+margin-top: 5em;
 }
 .section#wind{
-margin-left: 5%;
-margin-top: 52%;
+margin-left: 3em;
+margin-top: 47em;
 }
 
 .section#pressurehumidity{
-margin-left: 53.5%;
-margin-top: 52%;
+margin-left: 40em;
+margin-top: 47em;
+}
+
+#str{
+font-size: 15px;
+color: white;
+text-align: right
+}
+
+.hi{
+height: 7em;
+width: 20em;
+position: absolute;
+right: 1em;
 }
 
 div#humidity{
@@ -64,13 +121,60 @@ font-size: medium;
 margin-left: 5%;
 }
 
-#sun, #overcastsun, #moon{position: fixed;border-radius: 50%;width: 30%; 
-padding-top:30%;opacity: 0.9; margin-left: 34.5%; margin-top: 28%;
-}
+.bigbox{
+height: 11em;
+width: 20em;
+border:black solid 1px;
+background-color: #DDDDDD;
+opacity: 0.7;
+position: fixed;
+margin-top: 5em!important;
+overflow: hidden;
+border-radius: 1em;
+text-align: center}
 
-#sun{background-color: #F2EE00; }
-#overcastsun{background-color: #EEEEEE; opacity: 0.4;}
-#moon{background-color: #F9F9F9; opacity: 0.4;}
+.smallbox1{
+height:2em;
+width: 15em;
+background-color: #4d4d4d;
+opacity: 0.5;
+postion: fixed;
+
+margin-top: 1em;
+border: #f2f2f2 solid 0.2em}
+
+.smallbox2{
+height:2em;
+width: 15em;
+background-color: #4d4d4d;
+opacity: 0.5;
+postion: fixed;
+
+margin-top: 1em;
+border: #f2f2f2 solid 0.2em}
+
+.smallbox3{
+height:2em;
+width: 15em;
+background-color: #4d4d4d;
+opacity: 0.5;
+postion: fixed;
+
+margin-top: 1em;
+border: #f2f2f2 solid 0.2em}
+
+#button:hover{
+	margin-left:1em;
+	color:black;
+	font-weight: bold;
+	background-color: #cccccc;
+	opacity:1}
+
+#buttontext{
+	font-size: 13px;}
+#webpages{
+	text-decoration: none;
+	color: black}
 
 #norain, #lightrain, #heavyrain{
 margin-top: 2%;
@@ -91,6 +195,91 @@ margin-left: 80%;
 margin-top: 80%;
 }
 
+
+
+#mainbar{
+background-color: #1a1a1a;
+width: 100%;
+height: 6em;
+position: static;
+
+}
+#greybar{
+background-color: #cccccc;
+width: 99%;
+height: 0.4em;
+margin-top: 5em;
+margin-right: 0em;
+position: absolute;
+overflow: hidden;
+}
+
+#logo{
+background: url("logo") no-repeat;
+height: 4em;
+width: 20em;
+position: absolute;
+margin-left: 1em;
+margin-top: 0.3em}
+
+#B1{
+border-color: #333333;
+border-style:none ridge none ridge;
+border-width:0.5em;
+height: 4em;
+width: 12.0em;
+position: absolute;
+margin-left: 50em;
+margin-top: 1em}
+
+#B2{
+border-color: #333333;
+border-style:none ridge none ridge;
+border-width:0.5em;
+height: 4em;
+width: 12.0em;
+position: absolute;
+margin-left: 64em;
+margin-top: 1em}
+
+#B3{
+border-color: #333333;
+border-style:none ridge none ridge;
+border-width:0.5em;
+height: 4em;
+width: 12.0em;
+position: absolute;
+margin-left: 78em;
+margin-top: 1em}
+
+#glowbar1{
+background-color: #cccccc;
+width: 9em;
+height: 0.4em;
+position:  absolute;
+margin-left: 1.5em;
+margin-top: 0.2em}
+
+#Btext{
+text-align: center;
+font-size: 1.2em;
+color: white;
+font-family: sans-serif}
+
+#B1:hover #glowbar1{
+background-color: red;
+box-shadow: 0 0.5em 1em red}
+
+#B2:hover #glowbar1{
+background-color: red;
+box-shadow: 0 0.5em 1em red}
+
+#B3:hover #glowbar1{
+background-color: red;
+box-shadow: 0 0.5em 1em red}
+
+
+
 #currenttemp, #currentws, #currentwd, #currentp, #currenth{font-size: 500%;}
 #degrees, #unit{font-size: 200%; margin-left: 2%; vertical-align: 100%;}
 
@@ -104,5 +293,91 @@ width: 1%;
 .bar#0, .bar#2, .bar#4, .bar#6, .bar#8{background-color: #999999;}
 .bar#1, .bar#3, .bar#5, .bar#7, .bar#9{background-color: #CCCCCC;}
 
-.temp, .wind, .pressure, .humidity{display: inline-block; margin-left: 5%; width: 40%;}
+.temp, .wind, .pressure, .humidity, .timebox{display: inline-block; margin-left: 5%; width: 40%;}
 .winddir{display: inline-block; margin-left: 10%; float: right; margin-right: 10%;}
+
+
+/* the following code is for the help page */
+
+#helpbox {
+width: 90em; 
+height: 100em;
+background-color: #DDDDDD;
+opacity: 0.7;
+border-radius: 1em;
+padding-top: 1%;
+padding-bottom: 1%;
+position: absolute;
+margin-top: 5em;
+margin-left: 11em;
+margin-bottom: 4em}
+
+#helphead{
+font-size: 1.5em;
+margin-left: 0.5em;
+}
+
+#helptext{
+margin-left: 0.5em}
+
+#helpt{
+margin-left: 0.5em}
+
+/* the following code is for the Nextsteps page */
+
+#NSbox {
+width: 90em; 
+height: 100em;
+background-color: #DDDDDD;
+opacity: 0.7;
+border-radius: 1em;
+padding-top: 1%;
+padding-bottom: 1%;
+position: absolute;
+margin-top: 5em;
+margin-left: 11em;
+margin-bottom: 4em}
+
+#NShead{
+font-size: 1.5em;
+margin-left: 0.5em;
+}
+
+#NStext{
+margin-left: 0.5em}
+
+#NSt{
+margin-left: 0.5em}
+
+/* the following code is for the About page */
+
+#aboutbox {
+width: 90em; 
+height: 100em;
+background-color: #DDDDDD;
+opacity: 0.7;
+border-radius: 1em;
+padding-top: 1%;
+padding-bottom: 1%;
+position: absolute;
+margin-top: 5em;
+margin-left: 11em;
+margin-bottom: 4em}
+
+#abouthead{
+font-size: 1.5em;
+margin-left: 0.5em;
+}
+
+#abouttext{
+margin-left: 0.5em}
+
+#aboutt{
+margin-left: 0.5em}
+
+
+
+
+
+
+

@@ -1,10 +1,12 @@
+
 {% extends "weatherlayout.html" %}
+<!--(Ref 1), logic that changes background colour with respect to light levels -->
 {% block light %}
 {% if lightlevel < 2.2 %}
 <body id='night'>
 <div class='page' id='night'>
 <div id=moon>
-{% elif lightlevel < 3 %}
+{% elif lightlevel <  3 %}
 <body id='overcast'>
 <div class='page' id='overcast'>
 <div id=overcastsun>
@@ -15,8 +17,7 @@
 {% endif %} 
 {% endblock %}
 {% block precipitation %}
-{% for entry in entries %}
-{% if loop.last %}
+{% for entry in entries %}{% if loop.last %}
 {% if entry.inches == 0.0 %}
 	{% if lr < 60 %}
 	<p><span id='norain'>Not Raining.</span> Last rainfall {{lr}} minute(s) ago.</p>
@@ -34,9 +35,9 @@
 	<p class='rainfalltoday'><span class='rainfalltoday'>{{rainfalltoday}}</span> inches today.</p>
 {% endif %}
 {# <tr><td>{{ entry.timestamp }}</td><td>{{ entry.inches|safe }}in</td></tr> #}
-{% endif %}
-{% endfor %}
+{% endif %}{% endfor %}
 {% endblock %}
+
 
 {% block rainchart %}
 {% for value in rcvalues %}

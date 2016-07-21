@@ -13,37 +13,37 @@ os.system("sudo python %s &" % ("wind-direction.py"))
 
 err = [0, 0, 0, 0, 0, 0]
 while (True):
-	
-	for e in err:
-		if e == 1:
-			mcp.output(7,1)
-			time.sleep(0.2)
-			mcp.output(7,0)
-			time.sleep(0.2)
-	
-	tmp = os.popen("ps -Af").read()
-	if "weather.py" not in tmp[:]:
-		err[0] = 1
-	else:
-		err[0] = 0
-	if "raingauge.py" not in tmp[:]:
-		err[1] = 1
-	else:
-		err[1] = 0
-	if "temperature-pressure-humidity.py" not in tmp[:]:
-		err[2] = 1
-	else:
-		err[2] = 0
-	if "anemometer.py" not in tmp[:]:
-		err[3] = 1
-	else:
-		err[3] = 0
-	if "LDR.py" not in tmp[:]:
-		err[4] = 1
-	else:
-		err[4] = 0
-	if "wind-direction.py" not in tmp[:]:
+        
+        for e in err:
+                if e == 1:
+                        mcp.output(7,1)
+                        time.sleep(0.2)
+                        mcp.output(7,0)
+                        time.sleep(0.2)
+        
+        tmp = os.popen("ps -Af").read()
+        if "weather.py" not in tmp[:]:
+                err[0] = 1
+        else:
+                err[0] = 0
+        if "raingauge.py" not in tmp[:]:
+                err[1] = 1
+        else:
+                err[1] = 0
+        if "temperature-pressure-humidity.py" not in tmp[:]:
+                err[2] = 1
+        else:
+                err[2] = 0
+        if "anemometer.py" not in tmp[:]:
+                err[3] = 1
+        else:
+                err[3] = 0
+        if "LDR.py" not in tmp[:]:
+                err[4] = 1
+        else:
+                err[4] = 0
+        if "wind-direction.py" not in tmp[:]:
                 err[5] = 1
         else:
                 err[5] = 0
-	time.sleep(5)
+        time.sleep(5)
