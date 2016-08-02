@@ -4,7 +4,7 @@ import datetime
 from flask import Flask, request, session, g, redirect, url_for, \
     abort, render_template, flash
 
-DATABASE = '/home/pi/Desktop/originalWeather/sensors/weather.db'
+DATABASE = '../sensors/weather.db'
 DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
