@@ -101,6 +101,22 @@ def hello():
         curtemp = curtemp, minmax=minmax, curwindspeed = curwindspeed, lightlevel=lightlevel, curwinddir=curwinddir, \
         curpressure = curpressure, time = current_time, date = date)#, curhumidity = curhumidity
 
+@app.route('/more')
+def more_page():
+    
+    #time
+    date = datetime.date.today().strftime("%d, %b, %Y")
+    current_time = datetime.datetime.now().strftime("%H:%M")
+
+    #Light level
+    cur = g.db.execute("select avg(voltage) from light where timestamp > datetime('now', '-2 minutes')")
+    lightlevel = cur.fetchone()[0]
+    if lightlevel == None:
+        cur = g.db.execute("select voltage from light order by timestamp desc limit 1")
+        lightlevel = cur.fetchone()[0]
+        
+    return render_template('More.html', time = current_time, date = date, lightlevel=lightlevel)
+
 
 @app.route('/help')
 def help_page():

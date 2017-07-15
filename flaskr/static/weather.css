@@ -1,15 +1,18 @@
 	/*the following code are the colours of the background that change with respect to light levels. 
 The logic for this can be found in "main.html"(ref 1)*/
+
 #bright { background: url("sun.jpg") no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover }
+
 #overcast {background: url("cloudy-skies.jpg") no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover; }
+
 #night { background: url("KKSGGBW.jpg") no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
@@ -24,41 +27,42 @@ background-size: cover; }
 
 .section h1{
 text-align: center;
-font-size: medium;
+font-size: 200%;
 }
+
+
 /*the following code edits the shape and color of the grey boxes*/
 div.section {
-width: 30em; height: 25em;
+width: 30em; height: 30em;
 background-color: #DDDDDD;
 opacity: 0.7;
 border-radius: 10%;
-padding-top: 1%;
 padding-bottom: 1%;
 position: absolute;
 overflow: hidden;
 }
 
 #wind:hover{
-width: 31em;
-height: 26em;
+width: 30em;
+height: 30em;
 opacity: 0.8;
 }
 
 #pressurehumidity:hover{
-width: 31em;
-height: 26em;
+width: 30em;
+height: 30em;
 opacity: 0.8;
 }
 
 #precipitation:hover{
-width: 31em;
-height: 26em;
+width: 30em;
+height: 30em;
 opacity: 0.8;
 }
 
 #temperature:hover{
-width: 31em;
-height: 26em;
+width: 30em;
+height: 30em;
 opacity: 0.8;
 }
 
@@ -124,7 +128,6 @@ margin-left: 5%;
 .bigbox{
 height: 11em;
 width: 20em;
-border:black solid 1px;
 background-color: #DDDDDD;
 opacity: 0.7;
 position: fixed;
@@ -135,16 +138,16 @@ text-align: center}
 
 .smallbox1{
 height:2em;
-width: 15em;
+width: 2em;
 background-color: #4d4d4d;
 opacity: 0.5;
 postion: fixed;
 
-margin-top: 1em;
+margin-top: 1em;s
 border: #f2f2f2 solid 0.2em}
 
 .smallbox2{
-height:2em;
+height:5em;
 width: 15em;
 background-color: #4d4d4d;
 opacity: 0.5;
@@ -172,7 +175,7 @@ border: #f2f2f2 solid 0.2em}
 
 #buttontext{
 	font-size: 13px;}
-#webpages{
+#webpages{pretty, depressing
 	text-decoration: none;
 	color: black}
 
@@ -189,30 +192,30 @@ font-color:rgb(0,40,0);
 .statslink{
 position: static;
 text-style: none;
-font-size: large;
+font-size: 120%;
 text-align: right;
 margin-left: 80%;
 margin-top: 80%;
 }
 
-
-
 #mainbar{
+border-color: #4d4d4d;
+border-style:ridge ridge ridge ridge;
+border-width:0.8em;
 background-color: #1a1a1a;
 width: 100%;
-height: 6em;
+height: 6.7em;
 position: static;
-
 }
-#greybar{
-background-color: #cccccc;
-width: 99%;
-height: 0.4em;
+
+#darkgreybar{
+background-color: #333333;
+width: 100%;
+height: 1.6em;
 margin-top: 5em;
 margin-right: 0em;
 position: absolute;
-overflow: hidden;
-}
+overflow: hidden;}
 
 #logo{
 background: url("logo") no-repeat;
@@ -224,33 +227,33 @@ margin-top: 0.3em}
 
 #B1{
 border-color: #333333;
-border-style:none ridge none ridge;
-border-width:0.5em;
+border-style:ridge ridge ridge ridge;
+border-width:0.8em;
 height: 4em;
 width: 12.0em;
 position: absolute;
 margin-left: 50em;
-margin-top: 1em}
+margin-top: 0em}
 
 #B2{
 border-color: #333333;
-border-style:none ridge none ridge;
-border-width:0.5em;
+border-style:ridge ridge ridge ridge;
+border-width:0.8em;
 height: 4em;
 width: 12.0em;
 position: absolute;
 margin-left: 64em;
-margin-top: 1em}
+margin-top: 0em}
 
 #B3{
 border-color: #333333;
-border-style:none ridge none ridge;
-border-width:0.5em;
+border-style:ridge ridge ridge ridge;
+border-width:0.8em;
 height: 4em;
 width: 12.0em;
 position: absolute;
 margin-left: 78em;
-margin-top: 1em}
+margin-top: 0em}
 
 #glowbar1{
 background-color: #cccccc;
@@ -262,8 +265,8 @@ margin-top: 0.2em}
 
 #Btext{
 text-align: center;
-font-size: 1.2em;
-color: white;
+font-size: 1.5em;
+color: red;
 font-family: sans-serif}
 
 #B1:hover #glowbar1{
@@ -280,7 +283,7 @@ box-shadow: 0 0.5em 1em red}
 
 
 
-#currenttemp, #currentws, #currentwd, #currentp, #currenth{font-size: 500%;}
+currenttemp, #currentws, #currentwd, #currentp, #currenth{font-size: 500%;}
 #degrees, #unit{font-size: 200%; margin-left: 2%; vertical-align: 100%;}
 
 .barchart{
@@ -293,8 +296,36 @@ width: 1%;
 .bar#0, .bar#2, .bar#4, .bar#6, .bar#8{background-color: #999999;}
 .bar#1, .bar#3, .bar#5, .bar#7, .bar#9{background-color: #CCCCCC;}
 
-.temp, .wind, .pressure, .humidity, .timebox{display: inline-block; margin-left: 5%; width: 40%;}
+.temp, .wind, .pressure, .humidity, .timebox{display:inline-block; margin-left: 5%; width: 40%;}
 .winddir{display: inline-block; margin-left: 10%; float: right; margin-right: 10%;}
+
+/* the following code is for the More page */
+
+#Morebox{
+width: 90em; 
+height: 100em;
+background-color: #DDDDDD;
+opacity: 0.7;
+border-radius: 1em;
+padding-top: 1%;
+padding-bottom: 1%;
+position: absolute;
+margin-top: 5em;
+margin-left: 11em;
+margin-bottom: 4em}
+
+#Morehead{
+font-size: 3em;
+margin-left: 0.5em;
+}
+
+#Moretext{
+margin-left: 0.5em}
+
+#Moret{
+margin-left: 0.5em;
+font-size: 1.3em;
+}
 
 
 /* the following code is for the help page */
@@ -313,15 +344,18 @@ margin-left: 11em;
 margin-bottom: 4em}
 
 #helphead{
-font-size: 1.5em;
+font-size: 3em;
 margin-left: 0.5em;
 }
 
 #helptext{
-margin-left: 0.5em}
+margin-left: 0.5em;
+}
 
 #helpt{
-margin-left: 0.5em}
+margin-left: 0.5em;
+font-size: 1.3em;
+}
 
 /* the following code is for the Nextsteps page */
 
@@ -339,7 +373,7 @@ margin-left: 11em;
 margin-bottom: 4em}
 
 #NShead{
-font-size: 1.5em;
+font-size: 3em;
 margin-left: 0.5em;
 }
 
@@ -347,7 +381,9 @@ margin-left: 0.5em;
 margin-left: 0.5em}
 
 #NSt{
-margin-left: 0.5em}
+margin-left: 0.5em;
+font-size: 1.3em;
+}
 
 /* the following code is for the About page */
 
@@ -365,17 +401,51 @@ margin-left: 11em;
 margin-bottom: 4em}
 
 #abouthead{
-font-size: 1.5em;
+font-size: 3em;
 margin-left: 0.5em;
 }
 
 #abouttext{
-margin-left: 0.5em}
+margin-left: 0.5em;
+}
 
 #aboutt{
-margin-left: 0.5em}
+margin-left: 0.5em;
+font-size: 1.3em;
+}
 
+aboutbox {
+	bakcground: #e6e6e6
+}
 
+.corners {
+	background: #f6f6f6;
+	height: 700px
+	margain: 50px auto;
+	max-width: 600px;
+	position: relative;
+	width: 80%;
+	box-shadow: 0 1px 7px hsla(0, 0%, 0%, 0.2);
+}
+
+/* Corner Effect */
+.corners:after,
+.corners:before {
+	background: #e6e6e6;
+	content: '';
+	height: 50px;
+	position: absolute;
+	top: -25px;
+	width: 100px;
+	box-shadow: 0 5px 10px -7px hsla(0, 0%, 0%, 0.5);
+}
+.corners:after{
+	left: -50px;
+	transform: rotate(-45deg);
+}
+.corners:before {
+	right: -50px
+	transform: rotate(45deg);
 
 
 
