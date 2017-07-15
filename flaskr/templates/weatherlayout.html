@@ -9,22 +9,27 @@
 {% block light %}
 {% endblock %}
 
+
 	<div class='hi'>
 	<p id='str'> The date is: {{ date }}</p>
 	<p id='str'> The time is: {{ time }}</p>
 	</div>
 	
 	<div id='mainbar'>
-		<div id='greybar'></div>
+
+		<div id='darkgreybar'></div>
 		<a href="/"><div id='logo'></div></a>
+
 		<a href="about" id='webpages'><div id='B1'>
 		<p id='Btext'>About</p>
 		<div id='glowbar1'></div>
 		</div></a>
+
 		<a href="next-steps" id='webpages'><div id='B2'>
 		<p id='Btext'>Next Steps</p>
 		<div id='glowbar1'></div>
 		</div></a>
+
 		<a href="help" id='webpages'><div id='B3'>
 		<p id='Btext'>Help</p>
 		<div id='glowbar1'></div>
@@ -41,13 +46,15 @@
 --->
 
 <div id=mainboxes>
+
 	<div class='section' id='precipitation'>
 		<h1>Precipitation</h1>
 		{% block precipitation %}{% endblock %}
 		<div class='barchart'>
 		{% block rainchart %}{% endblock %}
 		</div>
-		<a href="#" class="statslink">More...</a>
+		<a href="more" class="statslink">More...<div id='B4'>   
+		</div></a>
 	</div>
 	<div class='section' id='temperature'>
 		<h1>Temperature</h1>
@@ -55,17 +62,20 @@
 		<div class='barchart'>
 		{% block tempchart %}{% endblock %}
 		</div>
-		<a href="#" class="statslink">More...</a>
+		<a href="more" class="statslink">More...<div id='B5'>
+		</div></a>
 	</div>
 	
 	<div class='section' id='wind'>
 		<h1>Wind</h1>
-		{% block wind %}{% endblock %}
+                {% block wind %}{% endblock %}
 		<div class='barchart'>
 		{% block windchart %}{% endblock %}
 		</div>
-		<a href="#" class="statslink">More...</a>
+		<a href="more" class="statslink">More...<div id='B6'>
+		</div></a>
 	</div>
+
 	<div class='section' id='pressurehumidity'>
 		<div id='humidity'>
 			<h2>Humidity</h2>
@@ -75,8 +85,17 @@
 			<h2>Pressure</h2>
 			{% block pressure %}{% endblock %}
 		</div>
-		<a href="#" class="statslink">More...</a>
+		<a href="more" class="statslink">More...<div id='B7'>
+		</div></a>
 	</div>
+
+<!---
+<div class=sectionBox>
+
+	<a href="More" id='statslink'><div class=link'' id=button><p id='buttontext'>Click for more</p></div></a>
+</div>
+--->
+
 </div>
 </body>
 </html>
